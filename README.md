@@ -1,5 +1,5 @@
 ## Infrastructure
-ALB DNS nginx-alb-685300535.us-east-1.elb.amazonaws.com
+ALB DNS <a href="nginx-alb-685300535.us-east-1.elb.amazonaws.com">nginx-alb-685300535.us-east-1.elb.amazonaws.com<a>
 
 ## Code Challenge Card
 go run creditcard/credit.go
