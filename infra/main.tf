@@ -118,7 +118,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_alarm_high" {
   namespace                 = "AWS/EC2"
   period                    = 60 
   statistic                 = "Average"
-  threshold                 = 70
+  threshold                 = 9
   alarm_description         = "This metric monitors high CPU utilization"
   dimensions = {
     AutoScalingGroupName = aws_autoscaling_group.nginx_asg.name
@@ -136,7 +136,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_alarm_low" {
   namespace                 = "AWS/EC2"
   period                    = 60 
   statistic                 = "Average"
-  threshold                 = 20
+  threshold                 = 4
   alarm_description         = "This metric monitors low CPU utilization"
   dimensions = {
     AutoScalingGroupName = aws_autoscaling_group.nginx_asg.name
@@ -198,6 +198,11 @@ resource "aws_autoscaling_attachment" "asg_attachment" {
   lb_target_group_arn   = aws_lb_target_group.nginx_tg.arn
 }
 
+resource "aws_autoscaling_attachment" "asg_attachment_https" {
+  autoscaling_group_name = aws_autoscaling_group.nginx_asg.name
+  lb_target_group_arn   = aws_lb_target_group.nginx_tg_https.arn
+}
+
 resource "aws_lb" "nginx_alb" {
   name               = "nginx-alb"
   internal           = false
@@ -224,7 +229,7 @@ resource "aws_lb_target_group" "nginx_tg" {
     timeout             = 5
     healthy_threshold   = 5
     unhealthy_threshold = 2
-    matcher             = "200"
+    matcher             = "301"
   }
 
   tags = {
