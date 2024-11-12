@@ -9,3 +9,7 @@ infra/.terraform/providers/registry.terraform.io/hashicorp/aws/5.75.1/linux_amd6
 infra/.terraform/providers/registry.terraform.io/hashicorp/aws/5.75.1/linux_amd64/terraform-provider-aws_v5.75.1_x5
 web/index.html
 infra/.terraform.*
+practise/*
+infra/terraform_1.5.6_linux_arm64.zip
+infra/.terraform/providers/registry.terraform.io/hashicorp/aws/5.75.1/linux_arm64/LICENSE.txt
+infra/.terraform/providers/registry.terraform.io/hashicorp/aws/5.75.1/linux_arm64/terraform-provider-aws_v5.75.1_x5
