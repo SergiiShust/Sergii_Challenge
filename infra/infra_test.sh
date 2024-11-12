@@ -1,7 +1,20 @@
 #!/bin/bash
 
+
+
+# Configuration
+ALB_DNS_NAME=$(terraform output -raw alb_dns_name)
+# Check if DNS name argument is provided
+if [[ -z "$ALB_DNS_NAME" ]]; then
+    echo "❌ Unable to retrieve ALB DNS name from Terraform output."
+    exit 1
+else
+    echo "✅ Retrieved ALB DNS name: $ALB_DNS_NAME"
+fi
+
+
 # Configuration: Replace with your ALB DNS Name
-ALB_DNS_NAME="nginx-alb-1449919506.us-east-1.elb.amazonaws.com"
+#ALB_DNS_NAME="nginx-alb-1449919506.us-east-1.elb.amazonaws.com"
 HTTP_PORT=80
 HTTPS_PORT=443
 EXPECTED_CONTENT="<h1>Hello World!</h1>"
